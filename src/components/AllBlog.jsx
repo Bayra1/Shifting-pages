@@ -8,6 +8,7 @@ let api = "https://dev.to/api/articles?username=gereltuyamz";
 export default function AllBlog() {
     const [data, setData] = useState([]);
     const [visibleItems, setVisibleItems] = useState(3);
+    const [isSeenLoadMore, setIsSeenLoadMore] = useState(false);
     const firstData = useRef('');
     const router = useRouter();
 
@@ -17,16 +18,16 @@ export default function AllBlog() {
         setData(response.data);
     };
 
-    const navigateToPost = (id) => router.push(`id=${id}`);
+    const navigateToPost = () => router.push(`ViewAllCards`);
 
     const LoadMore = () => {
-        setVisibleItems((prevVisibleItems) => prevVisibleItems + 1);
+        setVisibleItems((prevVisibleItems) => prevVisibleItems + 3);
+        setIsSeenLoadMore(true)
     };
 
     const Sorting = (label) => {
         setData(firstData.current.filter((element) => element.tags === label));
     };
-    console.log(data, "ddata of all blog");
 
     useEffect(() => {
         fetchApi(api);
@@ -40,11 +41,11 @@ export default function AllBlog() {
                     <BigText context="All Blog Post" />
                     <div className="w-full flex justify-between">
                         <div className="flex gap-8">
-                            <button onClick={() => Sorting('webdev')}>webdev</button>
-                            <button onClick={() => Sorting('programming')}>programming</button>
-                            <button onClick={() => Sorting('nextjs')}>nextjs</button>
+                            <button className="hover:text-green-400 text-yellow-400" onClick={() => Sorting('webdev')}>webdev</button>
+                            <button className="hover:text-green-400 " onClick={() => Sorting('programming')}>programming</button>
+                            <button className="hover:text-green-400 " onClick={() => Sorting('nextjs')}>nextjs</button>
                         </div>
-                        <button onClick={navigateToPost}>View All</button>
+                        <button className="hover:text-green-500" onClick={navigateToPost}>View All</button>
                     </div>
                 </div>
 
@@ -63,7 +64,7 @@ export default function AllBlog() {
 
                 {/* Button => (More Content) */}
                 <div className="flex justify-center items-center">
-                    {data.length > visibleItems && (
+                    {(!isSeenLoadMore &&
                         <button
                             onClick={LoadMore}
                             className="border-solid bg-slate-400 rounded flex py-2 px-5 justify-center items-center"
