@@ -1,5 +1,5 @@
 export default function BigText(props) {
     return (
-        <h1 className="text-2xl">{props.context}</h1>
+        <h1 className="text-4xl">{props.context}</h1>
     )
 }

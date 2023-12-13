@@ -1,7 +1,12 @@
 import CarouselImg from "../components/imgs/BigImage.png";
 import Badge from "./Badge";
 import BigText from "./BigText";
+let api = "https://dev.to/api/articles"
 export default function Carousel() {
+    // const [data, setData] = useState();
+
+
+console.log(api);
 
     return (
         <div className="flex justify-center items-center">

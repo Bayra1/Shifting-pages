@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import ViewAllCards from "@/components/ViewAllCards";
 import Carousel from "@/components/Caraousel";
 import Footer from "@/components/Footer";
-import Detail from "@/components/Details";
+import Delusion from "@/components/Delusion";
 export default function Home() {
   return (
     <div className=" w-full box-border">
@@ -12,8 +12,9 @@ export default function Home() {
       {/* <Carousel/> */}
       {/* <Trending/> */}
       {/* <AllBlog /> */}
+      <ViewAllCards/>
       {/* <Footer/> */}
-      <Detail/>
+      
     </div>
   )
 }

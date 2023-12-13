@@ -3,7 +3,7 @@ import ViewAllCards from "@/components/ViewAllCards";
 export default function Blog() {
     return (
         <main>
-            <ViewAllCards/>
+            <ViewAllCards isAllBlog={true}/>
         </main>
     )
 }
