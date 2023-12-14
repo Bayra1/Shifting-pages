@@ -17,7 +17,7 @@ const ViewAllCards = ({ isAllBlog }) => {
         if (isAllBlog) {
             setAllData(res.data)
         } else {
-            setAllData(res.data.slice(0, 6))
+            setAllData(res.data.slice(0, allData))
         }
     }
 
@@ -37,7 +37,7 @@ const ViewAllCards = ({ isAllBlog }) => {
             {/* rendiring cards */}
             <div className='flex flex-col gap-5'>
 
-                <div className='flex flex-wrap gap-5 justify-center'>
+                <div className='flex w-[1216px] flex-wrap gap-5 justify-center'>
                     {
                         allData.map((el, i) => {
                             return (

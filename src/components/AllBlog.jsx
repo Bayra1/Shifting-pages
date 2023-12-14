@@ -3,7 +3,7 @@ import BigText from "./BigText";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-let api = "https://dev.to/api/articles?username=gereltuyamz";
+let api = "https://dev.to/api/articles";
 
 export default function AllBlog() {
     const [data, setData] = useState([]);
@@ -18,7 +18,8 @@ export default function AllBlog() {
         setData(response.data);
     };
 
-    const navigateToPost = () => router.push(`ViewAllCards`);
+    const navigateToPost = () => router.push(`Blog`);
+    let TravelByIndex = (id) => router.push(`/${id}`)
 
     const LoadMore = () => {
         setVisibleItems((prevVisibleItems) => prevVisibleItems + 3);
@@ -50,13 +51,20 @@ export default function AllBlog() {
                 </div>
 
                 {/* Cards section */}
-                <div className="flex justify-center items-center flex-wrap gap-5">
+                <div className="flex w-[1216px] justify-center items-center flex-wrap gap-5">
                     {data.slice(0, visibleItems).map((item, index) => (
-                        <div className="flex border border-solid rounded-lg bg-blue-500 bg-opacity-5 p-2 flex-col items-start gap-5 w-fit" key={index}>
+                        <div onClick={() => TravelByIndex(item.id)} key={index}>
                             <img className="w-[360px] h-[240px] rounded" src={item.social_image} alt="" />
                             <div className="flex flex-col w-min gap-5 p-2 items-start min-w-fit">
-                                <div className="flex py-1 px-[10px] items-center rounded-lg w-fit bg-zinc-400 text-blue-500">{item.tags}</div>
+                                <div className="flex py-1 px-[10px] items-center rounded-lg w-fit bg-zinc-500 text-blue-500">{item.tags}</div>
                                 <div className="text-2xl font-semibold leading-7">{item.title}</div>
+                                <div className='w-[321px] flex justify-between gap-4'>
+                                    <div className='flex gap-3'>
+                                        <img className='w-9 h-9 rounded-3xl' src={item.user.profile_image} alt="" />
+                                        <div className='text-lg font-medium text-slate-300'>{item.user.name}</div>
+                                    </div>
+                                    <div className='text-lg font-medium text-slate-300'>{item.readable_publish_date}</div>
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -64,7 +72,7 @@ export default function AllBlog() {
 
                 {/* Button => (More Content) */}
                 <div className="flex justify-center items-center">
-                    {(!isSeenLoadMore &&
+                    {(
                         <button
                             onClick={LoadMore}
                             className="border-solid bg-slate-400 rounded flex py-2 px-5 justify-center items-center"
