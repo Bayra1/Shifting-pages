@@ -5,17 +5,17 @@ import Navbar from "@/components/Navbar";
 import Text from "@/components/Text";
 
 export default function Contact() {
-    return (
+  return (
+    <div className="flex justify-center items-center">
+      <div className="w-full flex flex-col gap-28">
+        <Navbar />
         <div className="flex justify-center items-center">
-            <div className="w-full flex flex-col gap-28">
-                <Navbar />
-                <div className="flex justify-center items-center">
-                    <BigText />
-                    <Text />
-                    <AddCont />
-                </div>
-                <Footer />
-            </div>
+          <BigText />
+          <Text />
+          <AddCont />
         </div>
-    )
+        <Footer />
+      </div>
+    </div>
+  );
 }

@@ -5,11 +5,11 @@ let api = "https://dev.to/api/articles"
 export default function Carousel() {
     const Images = [
         {
-            url: "https://images.unsplash.com/photo-1701979396507-4f4f8db40269?q=80&w=4498&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D2"
+            url: "https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
 
         {
-            url: "https://unsplash.com/photos/an-aerial-view-of-the-golden-gate-bridge-in-the-clouds-AHfHZijwjYc"
+            url: "https://plus.unsplash.com/premium_photo-1689643577385-57af0aba150e?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
 
         {
@@ -40,11 +40,10 @@ export default function Carousel() {
         <div className="flex justify-center items-center">
             <div>
                 <div className="relative">
-                    <div
-                        style={{ backgroundImage: `url(${Images[currentIndex].url})` }}
-                        className="w-[1216px] h-[600px] rounded bg-no-repeat"
-                    ></div>
-                    {/* content on picture of Carousel */}
+                    <div className="w-[1200px] h-[600px] rounded bg-no-repeat">
+                        <img style={{width:'100%', height:'100%'}} src={Images[currentIndex].url} alt="" />
+                    </div>
+                    
                     <div className="absolute top-[335px] bottom-[13px] right-[605px] left-[11px] flex w-[598px] rounded gap-10 bg-white p-10">
                         <div className="flex flex-col gap-4">
                             <Badge context="Technology" />
@@ -53,8 +52,7 @@ export default function Carousel() {
                                 August 20, 2022
                             </div>
                         </div>
-                    </div>
-                    {/* content on picture of Carousel */}
+                    </div>                    
                 </div>
                 <div className="flex gap-5 mt-5 justify-end">
                     <div className="border-solid bg-slate-200 rounded flex py-2 px-5 justify-center items-center">
